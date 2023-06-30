@@ -1,0 +1,243 @@
+/* Global styles */
+body {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Terminal styles */
+.terminal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.terminal-screen {
+  background-color: #000000;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.terminal-header h1 {
+  font-size: 24px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* Added: Allow buttons to wrap to the next line */
+  justify-content: center; /* Added: Center buttons horizontally */
+}
+
+.buttons-container button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-output-container {
+  display: flex;
+}
+
+.input-pane,
+.output-pane {
+  flex: 1 1 calc(50% - 5px);
+  padding: 10px;
+}
+
+.input-pane {
+  background-color: #000000;
+  overflow: auto;
+}
+
+.input-pane .editor-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 100%;
+}
+
+.input-pane .editor-column label,
+.input-pane .editor-column .editor-wrapper {
+  flex: 0 0 auto;
+}
+
+.input-pane .editor-column .editor-wrapper {
+  flex: 1 1 auto;
+}
+
+.input-pane .editor-column .editor-wrapper .editor-container {
+  height: 300px;
+}
+
+.output-pane {
+  background-color: #000000;
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.editor-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-size: 16px;
+}
+
+pre {
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.output-container {
+  margin-bottom: 20px;
+}
+
+.output-text {
+  color: #ffffff;
+}
+
+/* Dropdown styles */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.select-wrapper.open::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.select {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.select option {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.select-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #000000;
+  border: 2px solid #007bff;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.select-dropdown option {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.select-dropdown option:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .terminal-screen {
+    width: 60%;
+  }
+
+  .input-pane,
+  .output-pane {
+    flex-basis: calc(50% - 5px);
+  }
+
+  .output-pane {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .terminal-screen {
+    width: 100%;
+  }
+
+  .input-pane,
+  .output-pane {
+    flex-basis: 100%;
+  }
+
+  .output-pane {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 578px) { /* Added: Responsive behavior for screen sizes below 578px */
+  .terminal-screen {
+    width: 100%;
+  }
+  
+  .input-pane,
+  .output-pane {
+    flex-basis: 100%;
+  }
+
+  .output-pane {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  
+  .buttons-container {
+    flex-direction: column; /* Display buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+  }
+}
